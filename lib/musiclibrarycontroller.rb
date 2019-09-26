@@ -41,7 +41,7 @@ class MusicLibraryController
     array = []
     Song.all.sort_by{|song|song.name}.each_with_index{|song,index|
       string = "#{index+1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
-      array << string
+      array << song
       puts string
     }
     array
@@ -79,7 +79,7 @@ class MusicLibraryController
     puts "Which song number would you like to play?"
     input = gets.strip
     if input.is_a? Integer
-      puts list_songs[input]
+      puts "PLaying #{list_songs[input-1].name} by #{list_songs[input-1].artist.name}"
     end
   end
 end
